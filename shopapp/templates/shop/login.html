@@ -1,0 +1,45 @@
+{% extends 'shop/layouts/main.html' %}
+{% block title %}
+Login | ShopKart
+{% endblock title %}
+{% block content %}
+<div class="container mx-auto px-4 mt-16 min-h-[600px]">
+   <div class="flex flex-wrap">
+      <div class="w-full">
+         <h4 class="text-2xl font-semibold mb-3 text-gray-800">User Login</h4>
+         <hr class="border-gray-300 mb-6">
+         {% include 'shop/inc/message.html' %}
+      </div>
+   </div>
+
+   <section class="py-8">
+      <div class="max-w-md mx-auto">
+         <div class="bg-white p-8 rounded-lg shadow-md">
+            <form method="post" action="">
+               {% csrf_token %}
+               <div class="mb-6">
+                  <label for="username" class="block text-gray-700 text-sm font-medium mb-2">Username</label>
+                  <input type="text" name="username" id="username"
+                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                     placeholder="Enter Username" required>
+               </div>
+               <div class="mb-6">
+                  <label for="password" class="block text-gray-700 text-sm font-medium mb-2">Password</label>
+                  <input type="password" name="password" id="password"
+                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                     placeholder="Enter Password" required>
+               </div>
+               <button type="submit"
+                  class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md transition-colors duration-300 flex items-center justify-center">
+                  <i class="bi bi-box-arrow-in-right mr-2"></i> Login
+               </button>
+            </form>
+
+            <p class="mt-4 text-center text-gray-600">
+               New User? <a href="{% url 'register' %}" class="text-blue-600 hover:text-blue-800">Register Now</a>
+            </p>
+         </div>
+      </div>
+   </section>
+</div>
+{% endblock content %}

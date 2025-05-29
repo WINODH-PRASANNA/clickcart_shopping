@@ -1,0 +1,94 @@
+<nav class="fixed top-0 left-0 right-0 z-50 bg-gray-900 text-white shadow-md">
+   <div class="container mx-auto px-4 h-16 flex items-center justify-between">
+      <!-- Brand Logo (left aligned) -->
+      <a href="{% url 'home' %}" class="flex items-center text-xl font-bold text-white hover:text-yellow-400 transition-colors">
+         <i class="bi bi-cart4 mr-2"></i> ClickCart Shopping
+      </a>
+
+      <!-- Centered Navigation (occupies available space) -->
+      <div class="hidden lg:flex items-center justify-end flex-1">
+         <div class="flex items-center space-x-6">
+            <a href="{% url 'home' %}" class="flex items-center text-white hover:text-yellow-400 transition-colors">
+               <i class="bi bi-house-fill mr-1"></i> Home
+            </a>
+            <a href="{% url 'collection' %}" class="flex items-center text-white hover:text-yellow-400 transition-colors">
+               <i class="bi bi-stack mr-1"></i> Collections
+            </a>
+            
+            {% if request.user.is_authenticated %}
+               <span class="flex items-center text-white">
+                  <i class="bi bi-person-check-fill mr-1"></i> {{request.user}}
+               </span>
+               <a href="{% url 'logout' %}" class="flex items-center text-white hover:text-yellow-400 transition-colors">
+                  <i class="bi bi-box-arrow-right mr-1"></i> Logout
+               </a>
+               <a href="{% url 'cart' %}" class="flex items-center text-white hover:text-yellow-400 transition-colors">
+                  <i class="bi bi-cart-check-fill mr-1"></i> Cart
+               </a>
+               <a href="{% url 'favviewpage' %}" class="flex items-center text-white hover:text-yellow-400 transition-colors">
+                  <i class="bi bi-heart-fill mr-1"></i> Favourite
+               </a>
+            {% else %}
+               <a href="{% url 'login' %}" class="flex items-center text-white hover:text-yellow-400 transition-colors">
+                  <i class="bi bi-box-arrow-in-right mr-1"></i> Login
+               </a>
+               <a href="{% url 'register' %}" class="flex items-center text-white hover:text-yellow-400 transition-colors">
+                  <i class="bi bi-person-circle mr-1"></i> Register
+               </a>
+            {% endif %}
+         </div>
+      </div>
+
+      <!-- Right spacer (balances logo on left) -->
+      <div class="lg:block hidden w-[120px]"></div>
+
+      <!-- Mobile Menu Button (right aligned) -->
+      <button class="lg:hidden focus:outline-none" id="mobile-menu-button">
+         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+         </svg>
+      </button>
+   </div>
+
+   <!-- Mobile Menu (full width) -->
+   <div class="lg:hidden hidden bg-gray-800" id="mobile-menu">
+      <div class="container mx-auto px-4 py-2 flex flex-col items-center space-y-3">
+         <a href="{% url 'home' %}" class="w-full py-1 flex items-center justify-center text-white hover:text-yellow-400 transition-colors">
+            <i class="bi bi-house-fill mr-2"></i> Home
+         </a>
+         <a href="{% url 'collection' %}" class="w-full py-1 flex items-center justify-center text-white hover:text-yellow-400 transition-colors">
+            <i class="bi bi-stack mr-2"></i> Collections
+         </a>
+         
+         {% if request.user.is_authenticated %}
+            <div class="w-full py-1 flex items-center justify-center text-white">
+               <i class="bi bi-person-check-fill mr-2"></i> {{request.user}}
+            </div>
+            <a href="{% url 'logout' %}" class="w-full py-1 flex items-center justify-center text-white hover:text-yellow-400 transition-colors">
+               <i class="bi bi-box-arrow-right mr-2"></i> Logout
+            </a>
+            <a href="{% url 'cart' %}" class="w-full py-1 flex items-center justify-center text-white hover:text-yellow-400 transition-colors">
+               <i class="bi bi-cart-check-fill mr-2"></i> Cart
+            </a>
+            <a href="{% url 'favviewpage' %}" class="w-full py-1 flex items-center justify-center text-white hover:text-yellow-400 transition-colors">
+               <i class="bi bi-heart-fill mr-2"></i> Favourite
+            </a>
+         {% else %}
+            <a href="{% url 'login' %}" class="w-full py-1 flex items-center justify-center text-white hover:text-yellow-400 transition-colors">
+               <i class="bi bi-box-arrow-in-right mr-2"></i> Login
+            </a>
+            <a href="{% url 'register' %}" class="w-full py-1 flex items-center justify-center text-white hover:text-yellow-400 transition-colors">
+               <i class="bi bi-person-circle mr-2"></i> Register
+            </a>
+         {% endif %}
+      </div>
+   </div>
+</nav>
+
+<script>
+   // Mobile menu toggle functionality
+   document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+   });
+</script>

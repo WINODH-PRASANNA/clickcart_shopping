@@ -1,0 +1,96 @@
+{% load static %}
+
+<div class="relative overflow-hidden" x-data="{
+         activeSlide: 3,  // Set to 3 to show fourth slide by default
+         slides: 4,
+         interval: null,
+         startAutoSlide() {
+            this.interval = setInterval(() => {
+               this.activeSlide = (this.activeSlide + 1) % this.slides;
+            }, 3000);
+         },
+         stopAutoSlide() {
+            clearInterval(this.interval);
+         }
+   }" x-init="startAutoSlide()" @mouseenter="stopAutoSlide()" @mouseleave="startAutoSlide()">
+
+   <!-- Indicators -->
+   <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-10">
+      <template x-for="i in slides" :key="i">
+         <button @click="activeSlide = i - 1; stopAutoSlide(); startAutoSlide();"
+            class="w-[0.5vw] h-[0.5vw] min-w-[8px] min-h-[8px] max-w-[12px] max-h-[12px] rounded-full transition-all"
+            :class="{ 'bg-white': activeSlide === i - 1, 'bg-white/50': activeSlide !== i - 1 }"
+            :aria-label="'Slide ' + i"></button>
+      </template>
+   </div>
+
+   <!-- Slides -->
+   <div class="relative h-[30vh] sm:h-[40vh] md:h-[50vh] lg:h-[60vh] xl:h-[70vh] overflow-hidden">
+      <!-- Slide 1 -->
+      <div class="absolute inset-0 transition-opacity duration-500 ease-in-out"
+         :class="{ 'opacity-100 z-10': activeSlide === 0, 'opacity-0 z-0': activeSlide !== 0 }">
+         <img src="{% static 'images/1.jpg' %}" class="w-full h-full object-cover" alt="Offer">
+         <div class="absolute inset-0 bg-black/30 flex items-center justify-center text-center px-[2vw]">
+            <div class="text-white">
+               <h5 class="text-[3vw] md:text-[2.5vw] lg:text-[2vw] font-bold mb-[0.5vw]">Get Offer Now...</h5>
+               <p class="text-[1.8vw] md:text-[1.5vw] lg:text-[1.2vw]">Get 10% Discount For All Products.</p>
+            </div>
+         </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="absolute inset-0 transition-opacity duration-500 ease-in-out"
+         :class="{ 'opacity-100 z-10': activeSlide === 1, 'opacity-0 z-0': activeSlide !== 1 }">
+         <img src="{% static 'images/2.jpg' %}" class="w-full h-full object-cover" alt="Second slide">
+         <div class="absolute inset-0 bg-black/30 flex items-center justify-center text-center px-[2vw]">
+            <div class="text-white">
+               <h5 class="text-[3vw] md:text-[2.5vw] lg:text-[2vw] font-bold mb-[0.5vw]">Second slide label</h5>
+               <p class="text-[1.8vw] md:text-[1.5vw] lg:text-[1.2vw]">Some representative placeholder content for the second slide.</p>
+            </div>
+         </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="absolute inset-0 transition-opacity duration-500 ease-in-out"
+         :class="{ 'opacity-100 z-10': activeSlide === 2, 'opacity-0 z-0': activeSlide !== 2 }">
+         <img src="{% static 'images/3.jpg' %}" class="w-full h-full object-cover" alt="Third slide">
+         <div class="absolute inset-0 bg-black/30 flex items-center justify-center text-center px-[2vw]">
+            <div class="text-white">
+               <h5 class="text-[3vw] md:text-[2.5vw] lg:text-[2vw] font-bold mb-[0.5vw]">Third slide label</h5>
+               <p class="text-[1.8vw] md:text-[1.5vw] lg:text-[1.2vw]">Some representative placeholder content for the third slide.</p>
+            </div>
+         </div>
+      </div>
+
+      <!-- Slide 4 (Always shown by default) -->
+      <div class="absolute inset-0 transition-opacity duration-500 ease-in-out"
+         :class="{ 'opacity-100 z-10': activeSlide === 3, 'opacity-0 z-0': activeSlide !== 3 }">
+         <img src="{% static 'images/1.jpg' %}" class="w-full h-full object-cover" alt="Fourth slide">
+         <div class="absolute inset-0 bg-black/30 flex items-center justify-center text-center px-[2vw]">
+            <div class="text-white">
+               <h5 class="text-[3vw] md:text-[2.5vw] lg:text-[2vw] font-bold mb-[0.5vw]">Fourth slide label</h5>
+               <p class="text-[1.8vw] md:text-[1.5vw] lg:text-[1.2vw]">Some representative placeholder content for the third slide.</p>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <!-- Navigation arrows -->
+   <button @click="activeSlide = (activeSlide - 1 + slides) % slides; stopAutoSlide(); startAutoSlide();"
+      class="absolute left-[1vw] top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-[0.5vw] min-p-[8px] rounded-full z-10 transition-all"
+      aria-label="Previous">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-[2vw] w-[2vw] min-h-[16px] min-w-[16px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+   </button>
+
+   <button @click="activeSlide = (activeSlide + 1) % slides; stopAutoSlide(); startAutoSlide();"
+      class="absolute right-[1vw] top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-[0.5vw] min-p-[8px] rounded-full z-10 transition-all"
+      aria-label="Next">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-[2vw] w-[2vw] min-h-[16px] min-w-[16px]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+   </button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>`
