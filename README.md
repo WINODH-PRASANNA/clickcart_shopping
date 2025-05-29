@@ -40,29 +40,6 @@ ClickCart Shopping is a full-featured, responsive e-commerce web application bui
 
 ---
 
-## 📁 Folder Structure Overview
-
-\`\`\`
-ClickCart/
-├── ecom/                 # Django project folder
-│   ├── settings.py       # Project settings
-│   ├── urls.py           # URL routing
-│   └── ...
-├── shopapp/              # Django app for e-commerce logic
-│   ├── templates/shop/   # HTML templates
-│   │   ├── inc/          # Navbar, footer, slider components
-│   │   ├── layouts/      # Base layout
-│   │   ├── products/     # Product-related views
-│   │   ├── index.html    # Home page
-│   │   └── ...
-│   ├── views.py          # Business logic
-│   └── ...
-├── Pipfile               # Pipenv dependencies
-└── README.md             # Project documentation
-\`\`\`
-
----
-
 ## 🛠️ Installation & Setup
 
 1. **Clone the repository**
