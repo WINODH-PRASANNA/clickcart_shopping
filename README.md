@@ -44,7 +44,7 @@ ClickCart Shopping is a full-featured, responsive e-commerce web application bui
 
 1. **Clone the repository**
    \`\`\`bash
-   git clone https://github.com/your-username/clickcart.git
+   git clone https://github.com/WINODH-PRSANNA/clickcart.git
    cd clickcart
    \`\`\`
 
