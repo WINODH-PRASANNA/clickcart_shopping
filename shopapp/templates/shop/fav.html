@@ -1,53 +1,58 @@
 {% extends 'shop/layouts/main.html' %}
+
 {% block title %}
-Favorites | ShopKart
+Favorites
 {% endblock title %}
+
 {% block content %}
-<section class="bg-gray-100 py-4 my-5 min-h-[600px]">
-   <div class="container mx-auto px-4">
-      <div class="flex flex-col">
-         <div class="w-full">
-            <h4 class="text-2xl font-semibold mb-3 text-gray-800">Favourite Items</h4>
-            <hr class="border-gray-300 mb-6">
+<section class="bg-light py-4 my-5 min-vh-100">
+   <div class="container">
+      <div class="row">
+         <div class="col-12 mb-3">
+            <h4 class="fs-3 fw-semibold text-dark">Favourite Items</h4>
+            <hr>
          </div>
 
-         <div class="overflow-x-auto">
-            <table class="min-w-full bg-white rounded-lg overflow-hidden shadow-sm">
-               <thead class="bg-gray-200">
-                  <tr>
-                     <th class="py-3 px-4 text-left text-gray-700">Image</th>
-                     <th class="py-3 px-4 text-left text-gray-700">Product Name</th>
-                     <th class="py-3 px-4 text-left text-gray-700">Unit Price</th>
-                     <th class="py-3 px-4 text-left text-gray-700">Actions</th>
-                  </tr>
-               </thead>
-               <tbody class="divide-y divide-gray-200">
-                  {% for item in fav %}
-                  <tr class="hover:bg-gray-50">
-                     <td class="py-4 px-4">
-                        <img src="{{item.product.product_image.url}}" 
-                             alt="{{item.product.name}}" 
-                             class="h-20 w-20 object-contain">
-                     </td>
-                     <td class="py-4 px-4 text-gray-800 font-medium">{{item.product.name}}</td>
-                     <td class="py-4 px-4 text-gray-700">Rs. {{item.product.selling_price | stringformat:'d'}}</td>
-                     <td class="py-4 px-4">
-                        <a href="{% url 'remove_fav' item.id %}" 
-                           onclick="return confirm('Are you sure you want to remove this item?')"
-                           class="inline-flex items-center px-3 py-2 bg-red-600 text-white text-sm rounded-md hover:bg-red-700 transition-colors">
-                           <i class="bi bi-trash3 mr-2"></i> Remove
-                        </a>
-                     </td>
-                  </tr>
-                  {% empty %}
-                  <tr>
-                     <td colspan="4" class="py-8 px-4 text-center text-gray-500">
-                        No favorite items yet. Start adding some!
-                     </td>
-                  </tr>
-                  {% endfor %}
-               </tbody>
-            </table>
+         <div class="col-12">
+            <div class="table-responsive">
+               <table class="table table-bordered table-hover align-middle text-center">
+                  <thead class="table-secondary">
+                     <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col" class="d-none d-md-table-cell">Unit Price</th>
+                        <th scope="col">Remove</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     {% for item in fav %}
+                     <tr>
+                        <td>
+                           <img src="{{ item.product.product_image.url }}" alt="{{ item.product.name }}"
+                              class="img-fluid rounded" style="max-width: 80px; height: auto;">
+                        </td>
+                        <td class="fs-6 text-dark">{{ item.product.name }}</td>
+                        <td class="fs-6 text-muted d-none d-md-table-cell">
+                           Rs. {{ item.product.selling_price | stringformat:'d' }}
+                        </td>
+                        <td>
+                           <a href="{% url 'remove_fav' item.id %}"
+                              onclick="return confirm('Are you sure you want to remove this item?')"
+                              class="btn btn-sm btn-danger d-inline-flex align-items-center transition">
+                              <i class="bi bi-trash3 me-1"></i> Remove
+                           </a>
+                        </td>
+                     </tr>
+                     {% empty %}
+                     <tr>
+                        <td colspan="4" class="py-4 text-center text-muted">
+                           No favorite items yet. Start adding some!
+                        </td>
+                     </tr>
+                     {% endfor %}
+                  </tbody>
+               </table>
+            </div>
          </div>
       </div>
    </div>
