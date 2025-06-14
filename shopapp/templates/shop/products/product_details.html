@@ -11,35 +11,23 @@
                <li class="inline-flex items-center">
                   <a href="{% url 'home' %}"
                      class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600">
-                     <!-- <svg class="w-3 h-3 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z"/>
-                     </svg> -->
                      Home
                   </a>
                </li>
                <li>
                   <div class="flex items-center">
-                     <!-- <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                     </svg> -->
                      <a href="{% url 'collection' products %}"
                         class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2">Category</a>
                   </div>
                </li>
                <li>
                   <div class="flex items-center">
-                     <!-- <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                     </svg> -->
                      <a href="{% url 'collection' products.catagory %}"
                         class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2">Collections</a>
                   </div>
                </li>
                <li aria-current="page">
                   <div class="flex items-center">
-                     <!-- <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                     </svg> -->
                      <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2">{{ products }}</span>
                   </div>
                </li>
@@ -62,14 +50,14 @@
 
          <!-- Product Info -->
          <div class="w-full md:w-2/3">
-            <h5 class="text-2xl font-bold text-blue-600 mb-2">{{ products.name }}</h5>
+            <h5 class="text-2xl font-bold text-primary mb-2">{{ products.name }}</h5>
             <p class="text-gray-600 mb-2">( {{ products.catagory }} )</p>
             <p class="text-gray-600 mb-4"><i class="bi bi-star-fill text-yellow-400"></i> {{ products.rating }}</p>
             <p class="text-gray-700 mb-4">{{ products.description }}</p>
 
             <div class="mb-4">
                <s class="text-red-500 text-lg">Rs. {{ products.original_price | stringformat:'d' }}</s>
-               <h5 class="text-2xl font-bold text-green-600 bg-green-100 inline-block px-2 py-1 rounded">Rs. {{ products.selling_price | stringformat:'d' }}</h5>
+               <h5 class="text-2xl font-bold text-success inline-block px-2 py-1 rounded">Rs. {{ products.selling_price | stringformat:'d' }}</h5>
             </div>
 
             <div class="mt-6 space-y-4">
@@ -77,7 +65,7 @@
                <input type="hidden" id="pid" value="{{products.id}}">
 
                <div class="flex items-center gap-4">
-                  <div class="flex items-center border border-gray-300 rounded-md overflow-hidden w-32">
+                  <div class="flex items-center border border-gray-300 overflow-hidden w-32">
                      <button class="bg-green-600 text-white px-3 py-1" id="btnMinus">
                         <i class="bi bi-dash"></i>
                      </button>
@@ -88,7 +76,7 @@
                      </button>
                   </div>
 
-                  <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition-colors"
+                  <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 transition-colors"
                      id="btnCart">
                      <i class="bi bi-cart-plus-fill mr-2"></i> Add to Cart
                   </button>
