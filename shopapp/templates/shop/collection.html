@@ -36,18 +36,17 @@ Collections
          <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-3 mb-6">
             <div
                class="card h-full flex flex-col border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-               <div class="bg-white p-4 flex justify-center items-center" style="min-height: 200px;">
+               <div class="bg-gray-200 p-4 flex justify-center items-center" style="min-height: 200px;">
                   <img src="{{ item.image.url }}" alt="{{ item.name }}" class="max-h-48 object-contain">
                </div>
                <div class="p-4 flex flex-col flex-grow">
                   <div class="flex-grow">
-                     <h5 class="text-lg font-semibold text-blue-600 mb-2">{{ item.name }}</h5>
+                     <h5 class="text-lg font-semibold text-primary mb-2">{{ item.name }}</h5>
                      <p class="text-gray-600">{{ item.description }}</p>
                   </div>
                   <div class="mt-4">
                      <a href="{% url 'collection' item.name %}"
-                        class="block w-full px-4 py-2 bg-blue-600 text-white text-center font-medium rounded-md hover:bg-blue-700 transition-colors duration-300">
-                        View Products
+                        class="block w-full px-4 py-2 bg-blue-600 text-white text-center font-medium rounded-md hover:bg-blue-700 transition-colors duration-300">View Products
                      </a>
                   </div>
                </div>
