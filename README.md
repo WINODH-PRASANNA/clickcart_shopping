@@ -1,5 +1,7 @@
 # 🛒 ClickCart Shopping
 
+![ClickCart Shopping Home Page](https://i.imgur.com/VpLeQPe.jpeg)
+
 ClickCart Shopping is a full-featured, responsive e-commerce web application built with **Python Django**, **HTML**, **Tailwind CSS**, **JavaScript**, and **MySQL**. The project combines frontend, backend, and database functionalities into a modern shopping platform with an intuitive user interface and a fully functional admin dashboard.
 
 ---
